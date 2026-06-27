@@ -106,6 +106,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         maintext.setTextSize(22);
         maintext.setLayoutParams(firstrowlp);
         select_table=new Spinner(RoomExplorerActivity.this);
+        select_table.setContentDescription("Select Table");
         select_table.setLayoutParams(firstrowlp);
 
         firstrow.addView(maintext);
@@ -156,6 +157,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
         // the spinner which gives user a option to add new row , drop or delete table
         final Spinner spinnertable =new Spinner(RoomExplorerActivity.this);
+        spinnertable.setContentDescription("Table Operations");
         mainLayout.addView(spinnertable);
         mainLayout.addView(help);
         hsv.setPadding(0,10,0,10);
@@ -185,6 +187,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
         //the text view at the bottom of the screen which displays error or success messages after a query is executed
         tvmessage =new TextView(RoomExplorerActivity.this);
+        androidx.core.view.ViewCompat.setAccessibilityLiveRegion(tvmessage, androidx.core.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE);
 
         tvmessage.setText("Status messages will be displayed here");
         String Query = "SELECT name _id FROM sqlite_master WHERE type ='table'";
@@ -806,6 +809,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
         //spinner which displays update , delete options
         final Spinner crud_dropdown = new Spinner(getApplicationContext());
+        crud_dropdown.setContentDescription("Row Operations");
 
         ArrayAdapter<String> crudadapter = new ArrayAdapter<String>(RoomExplorerActivity.this,
                 android.R.layout.simple_spinner_item, spinnerArray) {
