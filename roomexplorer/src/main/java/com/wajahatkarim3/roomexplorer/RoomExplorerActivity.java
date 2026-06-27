@@ -166,11 +166,13 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         final LinearLayout thirdrow = new LinearLayout(RoomExplorerActivity.this);
         previous = new Button(RoomExplorerActivity.this);
         previous.setText("Previous");
+        previous.setContentDescription("Previous Page");
 
         previous.setBackgroundColor(Color.parseColor("#BAE7F6"));
         previous.setLayoutParams(secondrowlp);
         next = new Button(RoomExplorerActivity.this);
         next.setText("Next");
+        next.setContentDescription("Next Page");
         next.setBackgroundColor(Color.parseColor("#BAE7F6"));
         next.setLayoutParams(secondrowlp);
         TextView tvblank = new TextView(this);
@@ -184,7 +186,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         //the text view at the bottom of the screen which displays error or success messages after a query is executed
         tvmessage =new TextView(RoomExplorerActivity.this);
 
-        tvmessage.setText("Error Messages will be displayed here");
+        tvmessage.setText("Status messages will be displayed here");
         String Query = "SELECT name _id FROM sqlite_master WHERE type ='table'";
         tvmessage.setTextSize(18);
         mainLayout.addView(tvmessage);
@@ -234,14 +236,14 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
                     tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
                     if(c4!=null){
-                        tvmessage.setText("Queru Executed successfully.Number of rows returned :"+c4.getCount());
+                        tvmessage.setText("Query Executed successfully. Number of rows returned: "+c4.getCount());
                         if(c4.getCount()>0)
                         {
                             IndexInfo.maincursor=c4;
                             refreshTable(1);
                         }
                     }else{
-                        tvmessage.setText("Queru Executed successfully");
+                        tvmessage.setText("Query Executed successfully");
                         refreshTable(1);
                     }
 
@@ -349,7 +351,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                     IndexInfo.cursorpostion=pos-1;
                     //displaying the content of the table which is selected in the select_table spinner
                     IndexInfo.table_name=c.getString(0);
-                    tvmessage.setText("Error Messages will be displayed here");
+                    tvmessage.setText("Status messages will be displayed here");
                     tvmessage.setBackgroundColor(Color.WHITE);
 
                     //removes any data if present in the table layout
@@ -529,7 +531,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         for(int i=0;i<addnewrownames.size();i++)
                                         {
                                             EditText et = new EditText(getApplicationContext());
-
+                                            et.setHint("Enter " + addnewrownames.get(i).getText().toString());
                                             addnewrowvalues.add(et);
                                         }
 
@@ -546,7 +548,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         for(int i=0;i<addnewrownames.size();i++)
                                         {
                                             EditText et = new EditText(getApplicationContext());
-
+                                            et.setHint("Enter " + addnewrownames.get(i).getText().toString());
                                             addnewrowvalues.add(et);
                                         }
                                     }
@@ -782,6 +784,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         {
             String cv =value_string.get(i);
             EditText et = new EditText(getApplicationContext());
+            et.setHint("Enter " + columnames.get(i).getText().toString());
             value_string.add(cv);
             et.setText(cv);
             columvalues.add(et);
