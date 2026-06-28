@@ -61,9 +61,3 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
 }
 
-//Add these lines to publish library to bintray. This is the readymade scripts made to make uploading to bintray easy.
-//Place it at the end of the file
-if (project.rootProject.file('local.properties').exists()) {
-    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/install.gradle'
-    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/bintray.gradle'
-}

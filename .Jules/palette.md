@@ -5,3 +5,7 @@
 ## 2024-05-24 - Dynamic Live Regions for Screen Readers
 **Learning:** When text views in a UI dynamically update to show success/error status messages (e.g., executing queries), screen reader users are completely blind to these changes unless the views are marked as "live regions". In dynamic layouts (where views are instantiated programmatically rather than inflated from XML), you must explicitly set this via code to ensure inclusive feedback.
 **Action:** Always apply `ViewCompat.setAccessibilityLiveRegion` to programmatically created text views that convey transient status updates or important feedback in Android apps.
+
+## 2024-06-29 - Missing Content Descriptions on Programmatic Views
+**Learning:** When UI elements are generated programmatically (e.g., using `new EditText` or `new Button`), they lack the built-in accessibility descriptions that might be provided or prompted when using XML layouts. Screen reader users can struggle to understand the purpose of these elements without explicit `setContentDescription` calls.
+**Action:** Always add `setContentDescription` to programmatically created interactive elements to ensure they are accessible to screen readers.
