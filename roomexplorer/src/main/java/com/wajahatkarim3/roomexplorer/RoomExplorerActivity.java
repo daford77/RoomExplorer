@@ -141,11 +141,13 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         //A button which generates a text view from which user can write custome queries
         final EditText customquerytext = new EditText(this);
         customquerytext.setVisibility(View.GONE);
+        customquerytext.setContentDescription("Custom Query Input");
         customquerytext.setHint("Enter Your Query here and Click on Submit Query Button .Results will be displayed below");
         mainLayout.addView(customquerytext);
 
         final Button submitQuery = new Button(RoomExplorerActivity.this);
         submitQuery.setVisibility(View.GONE);
+        submitQuery.setContentDescription("Submit Custom Query");
         submitQuery.setText("Submit Query");
 
         submitQuery.setBackgroundColor(Color.parseColor("#BAE7F6"));
@@ -196,6 +198,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
         final Button customQuery = new Button(RoomExplorerActivity.this);
         customQuery.setText("Custom Query");
+        customQuery.setContentDescription("Toggle Custom Query Input");
         customQuery.setBackgroundColor(Color.parseColor("#BAE7F6"));
         mainLayout.addView(customQuery);
         customQuery.setOnClickListener(new OnClickListener() {
