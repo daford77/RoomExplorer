@@ -1,0 +1,3 @@
+## 2024-05-14 - Expensive RoomDatabase instantiation in UI components
+**Learning:** Instantiating `RoomDatabase` dynamically via `Room.databaseBuilder().build()` within heavily called methods (like `getData()` in `RoomExplorerActivity.java` used for querying) creates a severe performance bottleneck on Android, as building the database and creating connections is highly expensive.
+**Action:** Always cache the `RoomDatabase` instance (or the underlying `SupportSQLiteDatabase` connection) after its first creation rather than recreating it per query, particularly in components where queries are run frequently or dynamically.
