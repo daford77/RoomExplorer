@@ -574,6 +574,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         et.setBackgroundColor(Color.parseColor("#F2F2F2"));
                                         et.setTextColor(Color.parseColor("#000000"));
                                         et.setId(k);
+                                        androidx.core.view.ViewCompat.setLabelFor(tv, et.getId());
                                         final LinearLayout ll = new LinearLayout(RoomExplorerActivity.this);
                                         LinearLayout.LayoutParams tvl = new LinearLayout.LayoutParams(0, 100);
                                         tvl.weight = 1;
@@ -862,6 +863,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
             et.setTextColor(Color.parseColor("#000000"));
             et.setId(k);
+            androidx.core.view.ViewCompat.setLabelFor(tv, et.getId());
             final LinearLayout ll = new LinearLayout(RoomExplorerActivity.this);
             ll.setBackgroundColor(Color.parseColor("#FFFFFF"));
             ll.setId(lid);

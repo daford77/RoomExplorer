@@ -9,3 +9,6 @@
 ## 2024-06-29 - Missing Content Descriptions on Programmatic Views
 **Learning:** When UI elements are generated programmatically (e.g., using `new EditText` or `new Button`), they lack the built-in accessibility descriptions that might be provided or prompted when using XML layouts. Screen reader users can struggle to understand the purpose of these elements without explicit `setContentDescription` calls.
 **Action:** Always add `setContentDescription` to programmatically created interactive elements to ensure they are accessible to screen readers.
+## 2026-07-01 - Dynamic Views labelFor property
+**Learning:** For programmatic view generation, labels aren't implicitly associated with inputs via their hierarchy like they often are in XML or web frameworks. Screen readers won't know the purpose of the input.
+**Action:** Always use `androidx.core.view.ViewCompat.setLabelFor(labelView, inputView.getId())` when generating dynamic `TextView` labels mapped to `EditText` inputs in Android UIs.
