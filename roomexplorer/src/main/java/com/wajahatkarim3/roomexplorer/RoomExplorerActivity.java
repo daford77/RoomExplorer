@@ -39,6 +39,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
     protected Class<? extends RoomDatabase> myClass;
     protected String databaseName;
+    private SupportSQLiteDatabase cachedSqlDB; // ⚡ Bolt: Cache database connection
 
     public static final String DATABASE_CLASS_KEY = "dbClassName";
     public static final String DATABASE_NAME_KEY = "dbName";
@@ -1295,9 +1296,13 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             throw new RuntimeException("myClass is not initialized yet!");
         }
 
-        RoomDatabase roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+        // ⚡ Bolt: Cache database connection instead of recreating per query execution
+        if (cachedSqlDB == null || !cachedSqlDB.isOpen()) {
+            RoomDatabase roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+            cachedSqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        }
 
-        SupportSQLiteDatabase sqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        SupportSQLiteDatabase sqlDB = cachedSqlDB;
 
         String[] columns = new String[] { "mesage" };
         //an array list of cursor to save two cursors one has results from the query
@@ -1339,6 +1344,18 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             Cursor2.addRow(new Object[] { ""+ex.getMessage() });
             alc.set(1,Cursor2);
             return alc;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (cachedSqlDB != null && cachedSqlDB.isOpen()) {
+            try {
+                cachedSqlDB.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
