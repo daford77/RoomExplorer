@@ -103,6 +103,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
         TextView maintext = new TextView(RoomExplorerActivity.this);
         maintext.setText("Select Table");
+        maintext.setTextColor(Color.parseColor("#000000"));
         maintext.setTextSize(22);
         maintext.setLayoutParams(firstrowlp);
         select_table=new Spinner(RoomExplorerActivity.this);
@@ -130,9 +131,11 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         secondrowlp.weight = 1;
         TextView secondrowtext = new TextView(RoomExplorerActivity.this);
         secondrowtext.setText("No. Of Records : ");
+        secondrowtext.setTextColor(Color.parseColor("#000000"));
         secondrowtext.setTextSize(20);
         secondrowtext.setLayoutParams(secondrowlp);
         tv =new TextView(RoomExplorerActivity.this);
+        tv.setTextColor(Color.parseColor("#000000"));
         tv.setTextSize(20);
         tv.setLayoutParams(secondrowlp);
         secondrow.addView(secondrowtext);
@@ -155,6 +158,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
         final TextView help = new TextView(RoomExplorerActivity.this);
         help.setText("Click on the row below to update values or delete the tuple");
+        help.setTextColor(Color.parseColor("#000000"));
         help.setPadding(0,5,0,5);
 
         // the spinner which gives user a option to add new row , drop or delete table
@@ -192,6 +196,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         androidx.core.view.ViewCompat.setAccessibilityLiveRegion(tvmessage, androidx.core.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE);
 
         tvmessage.setText("Status messages will be displayed here");
+        tvmessage.setTextColor(Color.parseColor("#000000"));
         String Query = "SELECT name _id FROM sqlite_master WHERE type ='table'";
         tvmessage.setTextSize(18);
         mainLayout.addView(tvmessage);
