@@ -39,6 +39,8 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
     protected Class<? extends RoomDatabase> myClass;
     protected String databaseName;
+    protected RoomDatabase roomDatabase;
+    protected SupportSQLiteDatabase sqlDB;
 
     public static final String DATABASE_CLASS_KEY = "dbClassName";
     public static final String DATABASE_NAME_KEY = "dbName";
@@ -82,6 +84,10 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         {
             throw new RuntimeException("No database class name passed in the launch Intent.");
         }
+
+        // Cache the RoomDatabase instance and SupportSQLiteDatabase connection for performance
+        roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+        sqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
 
         mainscrollview = new ScrollView(RoomExplorerActivity.this);
 
@@ -1295,9 +1301,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             throw new RuntimeException("myClass is not initialized yet!");
         }
 
-        RoomDatabase roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
-
-        SupportSQLiteDatabase sqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        if (sqlDB == null) {
+            throw new RuntimeException("sqlDB is not initialized yet!");
+        }
 
         String[] columns = new String[] { "mesage" };
         //an array list of cursor to save two cursors one has results from the query
