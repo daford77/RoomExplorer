@@ -69,6 +69,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
     Spinner select_table;
     TextView tv;
 
+    // Bolt: Cache the SupportSQLiteDatabase connection to avoid expensive RoomDatabase recreation per query
+    private SupportSQLiteDatabase cachedSqlDB = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -1295,9 +1298,12 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             throw new RuntimeException("myClass is not initialized yet!");
         }
 
-        RoomDatabase roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+        if (cachedSqlDB == null) {
+            RoomDatabase roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+            cachedSqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        }
 
-        SupportSQLiteDatabase sqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        SupportSQLiteDatabase sqlDB = cachedSqlDB;
 
         String[] columns = new String[] { "mesage" };
         //an array list of cursor to save two cursors one has results from the query
