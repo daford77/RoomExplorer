@@ -12,3 +12,6 @@
 ## 2026-07-01 - Dynamic Views labelFor property
 **Learning:** For programmatic view generation, labels aren't implicitly associated with inputs via their hierarchy like they often are in XML or web frameworks. Screen readers won't know the purpose of the input.
 **Action:** Always use `androidx.core.view.ViewCompat.setLabelFor(labelView, inputView.getId())` when generating dynamic `TextView` labels mapped to `EditText` inputs in Android UIs.
+## 2024-07-26 - Dark Mode Contrast in Dynamic Views
+**Learning:** When dynamically generating Android views programmatically and assigning them hardcoded light backgrounds (e.g., `Color.WHITE`), omitting explicit text color definitions causes severe accessibility/contrast issues in Dark Mode, as the default text color may switch to white, resulting in invisible text.
+**Action:** Always explicitly define both foreground (`setTextColor`) and background colors together for programmatically generated views to ensure reliable readability and contrast across both Light and Dark themes.

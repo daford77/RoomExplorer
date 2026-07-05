@@ -104,6 +104,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         TextView maintext = new TextView(RoomExplorerActivity.this);
         maintext.setText("Select Table");
         maintext.setTextSize(22);
+        maintext.setTextColor(Color.parseColor("#000000"));
         maintext.setLayoutParams(firstrowlp);
         select_table=new Spinner(RoomExplorerActivity.this);
         select_table.setContentDescription("Select Table");
@@ -131,9 +132,11 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         TextView secondrowtext = new TextView(RoomExplorerActivity.this);
         secondrowtext.setText("No. Of Records : ");
         secondrowtext.setTextSize(20);
+        secondrowtext.setTextColor(Color.parseColor("#000000"));
         secondrowtext.setLayoutParams(secondrowlp);
         tv =new TextView(RoomExplorerActivity.this);
         tv.setTextSize(20);
+        tv.setTextColor(Color.parseColor("#000000"));
         tv.setLayoutParams(secondrowlp);
         secondrow.addView(secondrowtext);
         secondrow.addView(tv);
@@ -143,18 +146,21 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         customquerytext.setVisibility(View.GONE);
         customquerytext.setContentDescription("Custom Query Input");
         customquerytext.setHint("Enter Your Query here and Click on Submit Query Button .Results will be displayed below");
+        customquerytext.setTextColor(Color.parseColor("#000000"));
         mainLayout.addView(customquerytext);
 
         final Button submitQuery = new Button(RoomExplorerActivity.this);
         submitQuery.setVisibility(View.GONE);
         submitQuery.setContentDescription("Submit Custom Query");
         submitQuery.setText("Submit Query");
+        submitQuery.setTextColor(Color.parseColor("#000000"));
 
         submitQuery.setBackgroundColor(Color.parseColor("#BAE7F6"));
         mainLayout.addView(submitQuery);
 
         final TextView help = new TextView(RoomExplorerActivity.this);
         help.setText("Click on the row below to update values or delete the tuple");
+        help.setTextColor(Color.parseColor("#000000"));
         help.setPadding(0,5,0,5);
 
         // the spinner which gives user a option to add new row , drop or delete table
@@ -170,16 +176,19 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         final LinearLayout thirdrow = new LinearLayout(RoomExplorerActivity.this);
         previous = new Button(RoomExplorerActivity.this);
         previous.setText("Previous");
+        previous.setTextColor(Color.parseColor("#000000"));
         previous.setContentDescription("Previous Page");
 
         previous.setBackgroundColor(Color.parseColor("#BAE7F6"));
         previous.setLayoutParams(secondrowlp);
         next = new Button(RoomExplorerActivity.this);
         next.setText("Next");
+        next.setTextColor(Color.parseColor("#000000"));
         next.setContentDescription("Next Page");
         next.setBackgroundColor(Color.parseColor("#BAE7F6"));
         next.setLayoutParams(secondrowlp);
         TextView tvblank = new TextView(this);
+        tvblank.setTextColor(Color.parseColor("#000000"));
         tvblank.setLayoutParams(secondrowlp);
         thirdrow.setPadding(0,10,0,10);
         thirdrow.addView(previous);
@@ -190,6 +199,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         //the text view at the bottom of the screen which displays error or success messages after a query is executed
         tvmessage =new TextView(RoomExplorerActivity.this);
         androidx.core.view.ViewCompat.setAccessibilityLiveRegion(tvmessage, androidx.core.view.ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE);
+        tvmessage.setTextColor(Color.parseColor("#000000"));
 
         tvmessage.setText("Status messages will be displayed here");
         String Query = "SELECT name _id FROM sqlite_master WHERE type ='table'";
@@ -198,6 +208,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
         final Button customQuery = new Button(RoomExplorerActivity.this);
         customQuery.setText("Custom Query");
+        customQuery.setTextColor(Color.parseColor("#000000"));
         customQuery.setContentDescription("Toggle Custom Query Input");
         customQuery.setBackgroundColor(Color.parseColor("#BAE7F6"));
         mainLayout.addView(customQuery);
@@ -301,6 +312,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                 v.setBackgroundColor(Color.WHITE);
                 TextView adap =(TextView)v;
                 adap.setTextSize(20);
+                adap.setTextColor(Color.parseColor("#000000"));
 
                 return adap;
             }
@@ -310,6 +322,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                 View v =super.getDropDownView(position, convertView, parent);
 
                 v.setBackgroundColor(Color.WHITE);
+                if (v instanceof TextView) {
+                    ((TextView) v).setTextColor(Color.parseColor("#000000"));
+                }
 
                 return v;
             }
@@ -380,6 +395,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                             v.setBackgroundColor(Color.WHITE);
                             TextView adap =(TextView)v;
                             adap.setTextSize(20);
+                            adap.setTextColor(Color.parseColor("#000000"));
 
                             return adap;
                         }
@@ -388,6 +404,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                             View v =super.getDropDownView(position, convertView, parent);
 
                             v.setBackgroundColor(Color.WHITE);
+                            if (v instanceof TextView) {
+                                ((TextView) v).setTextColor(Color.parseColor("#000000"));
+                            }
 
                             return v;
                         }
@@ -824,6 +843,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                 v.setBackgroundColor(Color.WHITE);
                 TextView adap =(TextView)v;
                 adap.setTextSize(20);
+                adap.setTextColor(Color.parseColor("#000000"));
 
                 return adap;
             }
@@ -833,6 +853,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                 View v =super.getDropDownView(position, convertView, parent);
 
                 v.setBackgroundColor(Color.WHITE);
+                if (v instanceof TextView) {
+                    ((TextView) v).setTextColor(Color.parseColor("#000000"));
+                }
 
                 return v;
             }
