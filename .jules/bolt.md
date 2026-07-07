@@ -1,0 +1,3 @@
+## 2024-07-06 - RoomDatabase Creation Overhead
+**Learning:** Instantiating a new `RoomDatabase` per query in Android Room is highly expensive. Calling `Room.databaseBuilder(...).build()` over and over for every UI action (like scrolling or sorting, which hits `getData`) causes massive performance bottlenecks.
+**Action:** Always cache the `RoomDatabase` instance and its underlying `SupportSQLiteDatabase` connection instead of recreating it for every execution to ensure performant apps.
