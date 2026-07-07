@@ -43,6 +43,10 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
     public static final String DATABASE_CLASS_KEY = "dbClassName";
     public static final String DATABASE_NAME_KEY = "dbName";
 
+    // Cache RoomDatabase to prevent recreating it on every query
+    private RoomDatabase mRoomDatabase = null;
+    private SupportSQLiteDatabase mSqlDB = null;
+
     static class IndexInfo
     {
         public static int index = 10;
@@ -1295,9 +1299,13 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             throw new RuntimeException("myClass is not initialized yet!");
         }
 
-        RoomDatabase roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+        if (mRoomDatabase == null) {
+            mRoomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+        }
 
-        SupportSQLiteDatabase sqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        if (mSqlDB == null) {
+            mSqlDB = mRoomDatabase.getOpenHelper().getWritableDatabase();
+        }
 
         String[] columns = new String[] { "mesage" };
         //an array list of cursor to save two cursors one has results from the query
@@ -1311,7 +1319,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         try{
             String maxQuery = Query ;
             //execute the query results will be save in Cursor c
-            Cursor c = sqlDB.query(maxQuery, null);
+            Cursor c = mSqlDB.query(maxQuery, null);
 
 
             //add value to cursor2
