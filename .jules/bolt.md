@@ -1,0 +1,3 @@
+## 2024-05-24 - RoomDatabase Initialization Bottleneck
+**Learning:** In Android Room development, instantiating `RoomDatabase` (e.g., using `Room.databaseBuilder(...).build()`) is a highly expensive operation. Doing this repeatedly (such as per-query) leads to severe performance bottlenecks.
+**Action:** Always cache the `RoomDatabase` instance (or its underlying `SupportSQLiteDatabase` connection) instead of recreating it per query execution to ensure optimal performance.
