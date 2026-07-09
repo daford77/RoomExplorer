@@ -40,6 +40,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
     protected Class<? extends RoomDatabase> myClass;
     protected String databaseName;
 
+    private RoomDatabase roomDatabase = null;
+    private SupportSQLiteDatabase sqlDB = null;
+
     public static final String DATABASE_CLASS_KEY = "dbClassName";
     public static final String DATABASE_NAME_KEY = "dbName";
 
@@ -1295,9 +1298,13 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             throw new RuntimeException("myClass is not initialized yet!");
         }
 
-        RoomDatabase roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
-
-        SupportSQLiteDatabase sqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        // Cache database connection to prevent expensive recreation on every query
+        if (roomDatabase == null) {
+            roomDatabase = Room.databaseBuilder(this, myClass, databaseName).build();
+        }
+        if (sqlDB == null) {
+            sqlDB = roomDatabase.getOpenHelper().getWritableDatabase();
+        }
 
         String[] columns = new String[] { "mesage" };
         //an array list of cursor to save two cursors one has results from the query
