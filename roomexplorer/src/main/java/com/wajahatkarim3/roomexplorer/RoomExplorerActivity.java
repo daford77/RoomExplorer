@@ -142,6 +142,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         final EditText customquerytext = new EditText(this);
         customquerytext.setVisibility(View.GONE);
         customquerytext.setContentDescription("Custom Query Input");
+        customquerytext.setTextColor(Color.parseColor("#000000"));
+        customquerytext.setHintTextColor(Color.parseColor("#808080"));
+        customquerytext.setBackgroundColor(Color.parseColor("#F2F2F2"));
         customquerytext.setHint("Enter Your Query here and Click on Submit Query Button .Results will be displayed below");
         mainLayout.addView(customquerytext);
 
@@ -537,6 +540,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         for(int i=0;i<addnewrownames.size();i++)
                                         {
                                             EditText et = new EditText(getApplicationContext());
+                                            et.setHintTextColor(Color.parseColor("#808080"));
                                             et.setHint("Enter " + addnewrownames.get(i).getText().toString());
                                             addnewrowvalues.add(et);
                                         }
@@ -554,6 +558,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         for(int i=0;i<addnewrownames.size();i++)
                                         {
                                             EditText et = new EditText(getApplicationContext());
+                                            et.setHintTextColor(Color.parseColor("#808080"));
                                             et.setHint("Enter " + addnewrownames.get(i).getText().toString());
                                             addnewrowvalues.add(et);
                                         }
@@ -791,6 +796,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         {
             String cv =value_string.get(i);
             EditText et = new EditText(getApplicationContext());
+            et.setHintTextColor(Color.parseColor("#808080"));
             et.setHint("Enter " + columnames.get(i).getText().toString());
             value_string.add(cv);
             et.setText(cv);
