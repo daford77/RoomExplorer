@@ -105,6 +105,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         maintext.setText("Select Table");
         maintext.setTextSize(22);
         maintext.setLayoutParams(firstrowlp);
+        maintext.setTextColor(Color.parseColor("#000000"));
         select_table=new Spinner(RoomExplorerActivity.this);
         select_table.setContentDescription("Select Table");
         select_table.setLayoutParams(firstrowlp);
@@ -132,9 +133,11 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         secondrowtext.setText("No. Of Records : ");
         secondrowtext.setTextSize(20);
         secondrowtext.setLayoutParams(secondrowlp);
+        secondrowtext.setTextColor(Color.parseColor("#000000"));
         tv =new TextView(RoomExplorerActivity.this);
         tv.setTextSize(20);
         tv.setLayoutParams(secondrowlp);
+        tv.setTextColor(Color.parseColor("#000000"));
         secondrow.addView(secondrowtext);
         secondrow.addView(tv);
         mainLayout.addView(secondrow);
@@ -143,6 +146,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         customquerytext.setVisibility(View.GONE);
         customquerytext.setContentDescription("Custom Query Input");
         customquerytext.setHint("Enter Your Query here and Click on Submit Query Button .Results will be displayed below");
+        customquerytext.setTextColor(Color.parseColor("#000000"));
+        customquerytext.setHintTextColor(Color.parseColor("#808080"));
+        customquerytext.setBackgroundColor(Color.parseColor("#F2F2F2"));
         mainLayout.addView(customquerytext);
 
         final Button submitQuery = new Button(RoomExplorerActivity.this);
@@ -156,6 +162,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         final TextView help = new TextView(RoomExplorerActivity.this);
         help.setText("Click on the row below to update values or delete the tuple");
         help.setPadding(0,5,0,5);
+        help.setTextColor(Color.parseColor("#000000"));
 
         // the spinner which gives user a option to add new row , drop or delete table
         final Spinner spinnertable =new Spinner(RoomExplorerActivity.this);
@@ -181,6 +188,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         next.setLayoutParams(secondrowlp);
         TextView tvblank = new TextView(this);
         tvblank.setLayoutParams(secondrowlp);
+        tvblank.setTextColor(Color.parseColor("#000000"));
         thirdrow.setPadding(0,10,0,10);
         thirdrow.addView(previous);
         thirdrow.addView(tvblank);
@@ -194,6 +202,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         tvmessage.setText("Status messages will be displayed here");
         String Query = "SELECT name _id FROM sqlite_master WHERE type ='table'";
         tvmessage.setTextSize(18);
+        tvmessage.setTextColor(Color.parseColor("#000000"));
         mainLayout.addView(tvmessage);
 
         final Button customQuery = new Button(RoomExplorerActivity.this);
@@ -300,6 +309,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
                 v.setBackgroundColor(Color.WHITE);
                 TextView adap =(TextView)v;
+                adap.setTextColor(Color.parseColor("#000000"));
                 adap.setTextSize(20);
 
                 return adap;
@@ -379,6 +389,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
                             v.setBackgroundColor(Color.WHITE);
                             TextView adap =(TextView)v;
+                            adap.setTextColor(Color.parseColor("#000000"));
                             adap.setTextSize(20);
 
                             return adap;
@@ -823,6 +834,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
 
                 v.setBackgroundColor(Color.WHITE);
                 TextView adap =(TextView)v;
+                adap.setTextColor(Color.parseColor("#000000"));
                 adap.setTextSize(20);
 
                 return adap;
