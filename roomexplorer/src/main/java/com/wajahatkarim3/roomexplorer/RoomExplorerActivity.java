@@ -143,6 +143,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         customquerytext.setVisibility(View.GONE);
         customquerytext.setContentDescription("Custom Query Input");
         customquerytext.setHint("Enter Your Query here and Click on Submit Query Button .Results will be displayed below");
+        customquerytext.setTextColor(Color.parseColor("#000000"));
+        customquerytext.setBackgroundColor(Color.parseColor("#F2F2F2"));
+        customquerytext.setHintTextColor(Color.parseColor("#808080"));
         mainLayout.addView(customquerytext);
 
         final Button submitQuery = new Button(RoomExplorerActivity.this);
@@ -538,6 +541,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         {
                                             EditText et = new EditText(getApplicationContext());
                                             et.setHint("Enter " + addnewrownames.get(i).getText().toString());
+                                            et.setHintTextColor(Color.parseColor("#808080"));
                                             addnewrowvalues.add(et);
                                         }
 
@@ -555,6 +559,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         {
                                             EditText et = new EditText(getApplicationContext());
                                             et.setHint("Enter " + addnewrownames.get(i).getText().toString());
+                                            et.setHintTextColor(Color.parseColor("#808080"));
                                             addnewrowvalues.add(et);
                                         }
                                     }
@@ -792,6 +797,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             String cv =value_string.get(i);
             EditText et = new EditText(getApplicationContext());
             et.setHint("Enter " + columnames.get(i).getText().toString());
+            et.setHintTextColor(Color.parseColor("#808080"));
             value_string.add(cv);
             et.setText(cv);
             columvalues.add(et);
