@@ -143,6 +143,9 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
         customquerytext.setVisibility(View.GONE);
         customquerytext.setContentDescription("Custom Query Input");
         customquerytext.setHint("Enter Your Query here and Click on Submit Query Button .Results will be displayed below");
+        customquerytext.setTextColor(Color.parseColor("#000000"));
+        customquerytext.setHintTextColor(Color.parseColor("#808080"));
+        customquerytext.setBackgroundColor(Color.parseColor("#F2F2F2"));
         mainLayout.addView(customquerytext);
 
         final Button submitQuery = new Button(RoomExplorerActivity.this);
@@ -573,6 +576,7 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
                                         tv.setTextColor(Color.parseColor("#000000"));
                                         et.setBackgroundColor(Color.parseColor("#F2F2F2"));
                                         et.setTextColor(Color.parseColor("#000000"));
+                                        et.setHintTextColor(Color.parseColor("#808080"));
                                         et.setId(k);
                                         androidx.core.view.ViewCompat.setLabelFor(tv, et.getId());
                                         final LinearLayout ll = new LinearLayout(RoomExplorerActivity.this);
@@ -860,8 +864,8 @@ public class RoomExplorerActivity extends Activity implements OnItemClickListene
             tv.setId(t);
             tv.setTextColor(Color.parseColor("#000000"));
             et.setBackgroundColor(Color.parseColor("#F2F2F2"));
-
             et.setTextColor(Color.parseColor("#000000"));
+            et.setHintTextColor(Color.parseColor("#808080"));
             et.setId(k);
             androidx.core.view.ViewCompat.setLabelFor(tv, et.getId());
             final LinearLayout ll = new LinearLayout(RoomExplorerActivity.this);
